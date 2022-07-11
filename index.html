@@ -26,8 +26,34 @@
   <body>
     <div id="app-container">
       status is <span>{{status}}</span>
+      <pre>
+          _,.-------.,_
+      ,;~'             '~;,
+    ,;                     ;,
+   ;                         ;
+  ,'                         ',
+ ,;                           ;,
+ ; ;      .           .      ; ;
+ | ;   ______       ______   ; |
+ |  `/~"     ~" . "~     "~\'  |
+ |  ~  ,-~~~^~, | ,~^~~~-,  ~  |
+  |   |        }:{        |   |
+  |   l       / | \       !   |
+  .~  (__,.--" .^. "--.,__)  ~.
+  |     ---;' / | \ `;---     |
+   \__.       \/^\/       .__/
+    V| \                 / |V
+     | |T~\___!___!___/~T| |
+     | |`IIII_I_I_I_IIII'| |
+     |  \,III I I I III,/  |
+      \   `~~~~~~~~~~'    /
+        \   .       .   /
+          \.    ^    ./
+            ^~~~^~~~^
+      </pre>
+      <component v-for="block in blocks" v-bind:is="block.type" :config="block.config"></component>
+      <div class="cursor">|</div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.0/firebase.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
