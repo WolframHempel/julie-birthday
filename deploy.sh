@@ -1,6 +1,8 @@
 #!/bin/bash
+git checkout gh-pages
 webpack
-gsutil -m cp -r dist/* gs://pb-internal/internal/
-gsutil -m cp -r index.html gs://pb-internal/internal/
-gcloud compute url-maps invalidate-cdn-cache pb-lb --path "/internal/*" --project podbabble
+cp index.html dist/
+git add -A
+git commit -m "gh pages update"
+git checkout main
 echo "deployed! :-)"
