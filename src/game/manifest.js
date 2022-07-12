@@ -2,8 +2,8 @@ export default {
     'naturkundemuseum': {
         type: 'location',
         config: {
-            lat: 52.5299926764862,
-            lng: 13.379472046059915
+            latitude: 52.5299926764862,
+            longitude: 13.379472046059915
         }
     },
     'wakey': {
