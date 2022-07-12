@@ -1,4 +1,16 @@
 export default {
+    'fotogotthelf': {
+        type: 'foto',
+        config: {
+            maskUrl: '/assets/img/gotthelf-mask.png'
+        }
+    },
+    'gotthelfCodeInput': {
+        type: 'code-input',
+        config: {
+            solution: 'gotthelf'
+        }
+    },
     'naturkundemuseum': {
         type: 'location',
         config: {
