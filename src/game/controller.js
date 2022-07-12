@@ -30,7 +30,7 @@ export default class GameController {
                 return this.app.$children[i].$props.id;
             }
         }
-        return this.steps[i - 1];
+        return this.steps[this.app.$children.length - 1];
     }
 
     getNextId(id) {

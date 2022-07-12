@@ -1,6 +1,12 @@
 export default {
+    'naturkundemuseum': {
+        type: 'location',
+        config: {
+            lat: 52.5299926764862,
+            lng: 13.379472046059915
+        }
+    },
     'wakey': {
-        id: 'wakey',
         type: 'text',
         config: {
             message: 'wakey wakey Julia...'
@@ -19,5 +25,17 @@ export default {
         config: {
             src: '/assets/video/test-video.mp4'
         }
-    }
+    },
+    'magazineCodeQuestion': {
+        type: 'text',
+        config: {
+            message: 'wakey wakey Julia...'
+        }
+    },
+    'magazineCodeInput': {
+        type: 'code-input',
+        config: {
+            solution: '2344'
+        }
+    },
 }

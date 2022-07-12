@@ -97,3 +97,29 @@ body {
         }
     }
 }
+
+/***********************************
+* CODE INPUT BLOCK
+***********************************/
+.code-input-block {
+    position: relative;
+
+    input {
+        background-color: transparent;
+        position        : relative;
+        z-index         : 1;
+        letter-spacing  : 8px;
+        border          : none;
+    }
+
+    .placeholder {
+        position      : absolute;
+        letter-spacing: 8px;
+        top           : 0;
+        left          : 0;
+    }
+
+    .invalid {
+        color: orange;
+    }
+}
