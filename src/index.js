@@ -1,8 +1,10 @@
 import Vue from 'vue'
 
 import './blocks/text-block'
+import './blocks/video-block'
 
 import GameController from './game/controller'
+import C from './constants'
 
 window.app = new Vue({
     data: {
@@ -11,7 +13,7 @@ window.app = new Vue({
     },
     el: '#app-container',
     methods: {
-        addBlock(type, config) {
+        addBlock(id, type, config) {
             if (!type.endsWith('-block')) {
                 type = type + '-block';
             }
@@ -20,7 +22,7 @@ window.app = new Vue({
                 throw new Error(`Unknown component ${type} - valid types are ${types}`);
             }
             this.blocks.push({
-                type, config
+                id, type, config
             });
         }
     }

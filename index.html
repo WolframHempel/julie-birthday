@@ -27,31 +27,19 @@
     <div id="app-container">
       status is <span>{{status}}</span>
       <pre>
-          _,.-------.,_
-      ,;~'             '~;,
-    ,;                     ;,
-   ;                         ;
-  ,'                         ',
- ,;                           ;,
- ; ;      .           .      ; ;
- | ;   ______       ______   ; |
- |  `/~"     ~" . "~     "~\'  |
- |  ~  ,-~~~^~, | ,~^~~~-,  ~  |
-  |   |        }:{        |   |
-  |   l       / | \       !   |
-  .~  (__,.--" .^. "--.,__)  ~.
-  |     ---;' / | \ `;---     |
-   \__.       \/^\/       .__/
-    V| \                 / |V
-     | |T~\___!___!___/~T| |
-     | |`IIII_I_I_I_IIII'| |
-     |  \,III I I I III,/  |
-      \   `~~~~~~~~~~'    /
-        \   .       .   /
-          \.    ^    ./
-            ^~~~^~~~^
+
+
+       _.--""--._
+      /  _    _  \
+   _  ( (_\  /_) )  _
+  { \._\   /\   /_./ }
+  /_"=-.}______{.-="_\
+   _  _.=("""")=._  _
+  (_'"_.-"`~~`"-._"'_)
+   {_"            "_}
+  
       </pre>
-      <component v-for="block in blocks" v-bind:is="block.type" :config="block.config"></component>
+      <component v-for="block in blocks" v-bind:is="block.type" :id="block.id" :config="block.config"></component>
       <div class="cursor">|</div>
     </div>
     <script src="main.js"></script>

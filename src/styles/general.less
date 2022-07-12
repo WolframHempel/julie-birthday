@@ -55,3 +55,45 @@ body {
     animation-timing-function: ease;
     animation-iteration-count: 1;
 }
+
+/***********************************
+* TEXT BLOCK
+***********************************/
+.text-block {
+    &.clickable {
+        text-decoration: underline;
+        cursor         : pointer;
+    }
+}
+
+/***********************************
+* VIDEO BLOCK
+***********************************/
+.video-block {
+    margin         : 20px 0;
+    position       : relative;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+
+    video {
+        width: 100%;
+    }
+
+    .replay {
+        background     : #000000AA;
+        position       : absolute;
+        padding        : 10px;
+        text-decoration: underline;
+        opacity        : 0;
+        pointer-events : none;
+        transition     : opacity 300ms ease;
+        z-index        : 3;
+
+        &.visible {
+            pointer-events: all;
+            opacity       : 1;
+        }
+    }
+}
