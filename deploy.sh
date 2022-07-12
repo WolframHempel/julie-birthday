@@ -4,5 +4,5 @@ webpack
 cp index.html dist/
 git add -A
 git commit -m "gh pages update"
-git checkout main
+git checkout master
 echo "deployed! :-)"
