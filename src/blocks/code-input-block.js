@@ -6,7 +6,7 @@ Vue.component('code-input-block', {
     template: `<div class="code-input-block">
        <input 
         type="text" 
-        v-model="code" 
+        v-model="codeModel" 
         ref="input"
         :disabled="code === config.solution"
         :maxlength="maxLength"
@@ -28,10 +28,15 @@ Vue.component('code-input-block', {
     data() {
         const maxLength = this.$props.config.solution.length;
         return {
-            code: '',
+            codeModel: '',
             maxLength: maxLength,
             placeholder: '__________________________'.substring(0, maxLength),
             status: C.UNINITIALIZED
+        }
+    },
+    computed: {
+        code() {
+            return this.codeModel.toUpperCase();
         }
     },
     mounted() {

@@ -110,6 +110,7 @@ body {
         z-index         : 1;
         letter-spacing  : 8px;
         border          : none;
+        text-transform  : uppercase;
     }
 
     .placeholder {
@@ -121,5 +122,80 @@ body {
 
     .invalid {
         color: orange;
+    }
+}
+
+/***********************************
+* LOCATION BLOCK
+***********************************/
+.location-block {
+    display       : flex;
+    flex-direction: row;
+
+    span {
+        display: block;
+    }
+}
+
+/***********************************
+* FOTO BLOCK
+***********************************/
+.foto-block {
+    position: relative;
+
+    &.stopped {
+        filter: saturate(0);
+    }
+
+    video {
+        width: 100%;
+    }
+
+    .mask {
+        position           : absolute;
+        z-index            : 1;
+        width              : 100%;
+        height             : 100%;
+        display            : flex;
+        flex-direction     : column;
+        justify-content    : center;
+        align-items        : center;
+        background-size    : contain;
+        background-position: center center;
+        background-repeat  : no-repeat;
+        top                : 0;
+        left               : 0;
+    }
+}
+
+/***********************************
+* BARCODE LIST BLOCK
+***********************************/
+.barcode-list-block {
+    position: relative;
+
+    .video-output {
+        position: relative;
+
+        >canvas {
+            position: absolute;
+            left    : 0;
+            top     : 0;
+            width   : 100%;
+            height  : 200px;
+            z-index : 2;
+        }
+
+        .container {
+            width: 100%;
+
+            video {
+                width: 100%;
+            }
+
+            canvas {
+                display: none;
+            }
+        }
     }
 }

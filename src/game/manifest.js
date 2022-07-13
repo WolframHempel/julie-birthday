@@ -1,9 +1,32 @@
 export default {
+    'dmList': {
+        type: 'barcode-list',
+        config: {
+
+        }
+    },
+    'fotogotthelf': {
+        type: 'foto',
+        config: {
+            maskUrl: '/assets/img/gotthelf-mask.png'
+        }
+    },
+    'gotthelfCodeInput': {
+        type: 'code-input',
+        onComplete: {
+            destroy: 'fotogotthelf'
+        },
+        config: {
+            solution: 'GOTTHELF'
+        }
+    },
+
     'naturkundemuseum': {
         type: 'location',
         config: {
-            latitude: 52.5299926764862,
-            longitude: 13.379472046059915
+            latitude: 52.532565898454614,
+            longitude: 13.388635600128081,
+            targetReachedDistance: 30
         }
     },
     'wakey': {

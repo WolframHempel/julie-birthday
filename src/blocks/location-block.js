@@ -4,16 +4,13 @@ import baseBlock from './base-block'
 
 Vue.component('location-block', {
     template: `<div class="location-block">
-      <div>targetAngle: {{targetAngle}}</div>
-      <div>targetDistance: {{targetDistance}}</div>
-      <div>northAngle: {{northAngle}}</div>
-      <div>angle: {{angle}}</div>
+      <span class="compass"><span :style="{transform:'rotate('+((360-angle)-90) +'deg)'}">></span></span>&nbsp;
+      <span>distance {{targetDistance}}m</span>
     </div>`,
     props: ['id', 'config'],
 
     data() {
         return {
-
             status: C.UNINITIALIZED,
             targetAngle: 0,
             targetDistance: 0,
@@ -22,7 +19,7 @@ Vue.component('location-block', {
         }
     },
     mounted() {
-        navigator.geolocation.watchPosition(this.onPosition.bind(this), this.onError.bind(this), {
+        this.watchId = navigator.geolocation.watchPosition(this.onPosition.bind(this), this.onError.bind(this), {
             enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0
@@ -35,9 +32,17 @@ Vue.component('location-block', {
             const lon1 = position.coords.longitude;
             const lat2 = this.$props.config.latitude;
             const lon2 = this.$props.config.longitude;
-            console.log(lat1, lon1, lat2, lon2);
-            this.$data.targetAngle = Math.atan2(lat1 - lat2, lon1 - lon2) * 180 / Math.PI;
+            this.$data.targetAngle = Math.atan2(lon2 - lon1, lat2 - lat1) * 180 / Math.PI;
             this.$data.targetDistance = this.getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2);
+            if (this.$data.targetDistance < this.$data.targetReachedDistance) {
+                this.destroy();
+            }
+        },
+
+        destroy() {
+            navigator.geolocation.clearWatch(this.watchId);
+            window.removeEventListener("deviceorientation", this.onOrientation, true);
+            baseBlock.setComplete(this);
         },
         getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
             function deg2rad(deg) {
@@ -52,12 +57,19 @@ Vue.component('location-block', {
                 Math.sin(dLon / 2) * Math.sin(dLon / 2);
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             var d = R * c; // Distance in km
-            return d;
+            return Math.round(d * 1000);
         },
 
         onOrientation(orientation) {
             this.$data.northAngle = orientation.webkitCompassHeading || Math.abs(orientation.alpha - 360);
-            this.$data.angle = this.$data.targetAngle - this.$data.northAngle;
+            var a = this.$data.northAngle - this.$data.targetAngle;
+            if (a > 360) {
+                a = a - 360;
+            } else if (a < 0) {
+                a = 360 - a;
+            }
+
+            this.$data.angle = a;
         },
         onError(error) {
             console.log('error', error);

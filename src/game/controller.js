@@ -8,8 +8,26 @@ export default class GameController {
     }
 
     init() {
-        this.app.$on('block-complete', this.next.bind(this));
+        this.app.$on('block-complete', this.onBlockComplete.bind(this));
         this.next();
+    }
+
+    onBlockComplete() {
+        const currentId = this.getCurrentId();
+        if (manifest[currentId].onComplete) {
+            var block;
+
+            if (manifest[currentId].onComplete.destroy) {
+                block = this.getBlockById(manifest[currentId].onComplete.destroy);
+                if (!block) {
+                    throw new Error(`block with id ${manifest.onComplete.destroy} not found`);
+                }
+
+                block.destroy();
+            }
+        }
+        this.next();
+
     }
 
     next() {
@@ -19,6 +37,15 @@ export default class GameController {
             return;
         }
         this.app.addBlock(id, manifest[id].type, manifest[id].config);
+    }
+
+    getBlockById(id) {
+        for (var i = 0; i < this.app.$children.length; i++) {
+            if (this.app.$children[i].$props.id === id) {
+                return this.app.$children[i];
+            }
+        }
+        return null;
     }
 
     getCurrentId() {

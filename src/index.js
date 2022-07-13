@@ -4,6 +4,8 @@ import './blocks/text-block'
 import './blocks/video-block'
 import './blocks/code-input-block'
 import './blocks/location-block'
+import './blocks/foto-block'
+import './blocks/barcode-list-block'
 
 import GameController from './game/controller'
 import C from './constants'
