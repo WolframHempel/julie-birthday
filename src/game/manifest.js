@@ -7,8 +7,11 @@ export default {
     },
     'gotthelfCodeInput': {
         type: 'code-input',
+        onComplete: {
+            destroy: 'fotogotthelf'
+        },
         config: {
-            solution: 'gotthelf'
+            solution: 'GOTTHELF'
         }
     },
     'naturkundemuseum': {

@@ -110,6 +110,7 @@ body {
         z-index         : 1;
         letter-spacing  : 8px;
         border          : none;
+        text-transform  : uppercase;
     }
 
     .placeholder {
@@ -141,6 +142,10 @@ body {
 ***********************************/
 .foto-block {
     position: relative;
+
+    &.stopped {
+        filter: saturate(0);
+    }
 
     video {
         width: 100%;
