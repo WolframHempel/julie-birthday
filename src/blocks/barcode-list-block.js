@@ -12,7 +12,9 @@ Vue.component('barcode-list-block', {
             <canvas class="overlay" ref="canvas" width="${WIDTH}" height="${HEIGHT}"></canvas>
         </div>
         <ul class="list">
-
+            <li v-for="product in products">
+                <span class="code">{{product.code}}</span>
+            </li>
         </ul>
     </div>`,
     props: ['id', 'config'],
@@ -20,7 +22,8 @@ Vue.component('barcode-list-block', {
     data() {
         return {
             status: C.UNINITIALIZED,
-            isStopped: false
+            isStopped: false,
+            products: []
         }
     },
     async mounted() {
@@ -53,9 +56,21 @@ Vue.component('barcode-list-block', {
     methods: {
         onBarcodeDetected(data) {
             console.log('detected', data);
+
+            this.addProduct(data.codeResult.code)
             this.drawMarkers(data);
         },
 
+        addProduct(code) {
+            for (var i = 0; i < this.$data.products.length; i++) {
+                if (this.$data.products[i].code === code) {
+                    return;
+                }
+            }
+            this.$data.products.push({
+                code: code
+            });
+        },
         drawMarkers(data) {
             clearTimeout(this.clearTimeout);
             this.clearTimeout = setTimeout(() => {
