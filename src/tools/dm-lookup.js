@@ -14,6 +14,3 @@ export async function dmLookup(ean) {
     }
 
 }
-
-//https://www.dm.de/search?query=4001499917349&searchType=product
-//4001499917349

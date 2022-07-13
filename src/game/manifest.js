@@ -2,7 +2,7 @@ export default {
     'dmList': {
         type: 'barcode-list',
         config: {
-
+            code: 13.55
         }
     },
     'fotogotthelf': {
