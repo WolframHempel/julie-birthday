@@ -1,4 +1,10 @@
 export default {
+    'dmList': {
+        type: 'barcode-list',
+        config: {
+
+        }
+    },
     'fotogotthelf': {
         type: 'foto',
         config: {
@@ -14,6 +20,7 @@ export default {
             solution: 'GOTTHELF'
         }
     },
+
     'naturkundemuseum': {
         type: 'location',
         config: {

@@ -15,7 +15,6 @@ export default class GameController {
     onBlockComplete() {
         const currentId = this.getCurrentId();
         if (manifest[currentId].onComplete) {
-
             var block;
 
             if (manifest[currentId].onComplete.destroy) {
