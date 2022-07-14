@@ -55,9 +55,9 @@ export default {
     'goToDm': {
         type: 'location',
         config: {
-            latitude: 52.530890814900715,
-            longitude: 13.384461645473344,
-            targetReachedDistance: 20
+            latitude: 52.53089540048423,
+            longitude: 13.384441613522423,
+            targetReachedDistance: 30
         }
     },
 
@@ -87,7 +87,7 @@ export default {
         config: {
             latitude: 52.530077611677996,
             longitude: 13.380809727153448,
-            targetReachedDistance: 20
+            targetReachedDistance: 30
         }
     },
 

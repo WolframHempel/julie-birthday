@@ -34,7 +34,7 @@ Vue.component('location-block', {
             const lon2 = this.$props.config.longitude;
             this.$data.targetAngle = Math.atan2(lon2 - lon1, lat2 - lat1) * 180 / Math.PI;
             this.$data.targetDistance = this.getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2);
-            if (this.$data.targetDistance < this.$data.targetReachedDistance) {
+            if (this.$data.targetDistance < this.$props.targetReachedDistance) {
                 this.destroy();
             }
         },
