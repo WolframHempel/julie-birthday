@@ -7,6 +7,9 @@ export default {
     },
 
     setComplete(block) {
+        if (block.$data.status === C.COMPLETE) {
+            return;
+        }
         block.$data.status = C.COMPLETE;
         block.$root.$emit('block-complete', block.$props.id);
     }

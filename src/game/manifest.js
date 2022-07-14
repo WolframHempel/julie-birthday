@@ -16,7 +16,7 @@ export default {
     'anonymousVideo': {
         type: 'video',
         config: {
-            src: '/assets/video/anonymous-video.mp4'
+            src: './assets/video/anonymous-video.mp4'
         }
     },
     'recipeText': {
