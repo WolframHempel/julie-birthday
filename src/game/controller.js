@@ -34,6 +34,9 @@ export default class GameController {
         const currentId = this.getCurrentId();
         const id = this.getNextId(currentId);
         if (!id) {
+            if (this.app.$data.blocks.length === this.steps.length) {
+                this.app.$data.gameOver = true;
+            }
             return;
         }
         this.app.addBlock(id, manifest[id].type, manifest[id].config);

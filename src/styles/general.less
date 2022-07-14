@@ -51,9 +51,54 @@ body {
 
 .fade-in {
     animation-name           : fadeIn;
-    animation-duration       : 100ms;
+    animation-duration       : 60ms;
     animation-timing-function: ease;
     animation-iteration-count: 1;
+}
+
+/***********************************
+* FORMAT OVERLAY
+***********************************/
+#format-overlay {
+    position           : fixed;
+    z-index            : 9;
+    left               : 0;
+    top                : 0;
+    right              : 0;
+    bottom             : 0;
+    background-color   : #000;
+    background-size    : contain;
+    background-position: center center;
+    background-repeat  : no-repeat;
+}
+
+/***********************************
+* ADMIN CONTROLS
+***********************************/
+.admin-controls {
+    position: absolute;
+    top     : 0;
+    right   : 0;
+    width   : 20px;
+    height  : 30px;
+    overflow: hidden;
+    z-index : 1;
+
+    &.open {
+        width: 90px;
+
+    }
+
+    >div {
+        float           : left;
+        width           : 30px;
+        height          : 30px;
+        background-color: #000;
+        display         : flex;
+        flex-direction  : column;
+        justify-content : center;
+        align-items     : center;
+    }
 }
 
 /***********************************

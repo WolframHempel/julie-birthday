@@ -10,11 +10,13 @@ Vue.component('video-block', {
     props: ['id', 'config'],
     data() {
         return {
+            status: C.UNINITIALIZED,
             hasEnded: false
         }
     },
     mounted() {
         this.init();
+        this.isDestroyed = false;
     },
     methods: {
         init() {
@@ -26,9 +28,17 @@ Vue.component('video-block', {
             this.$refs.video.play();
         },
         onEnded() {
+            this.destroy();
+        },
+        destroy() {
+            if (this.isDestroyed) {
+                return;
+            }
+            this.isDestroyed = true;
+            this.$refs.video.pause();
             this.$data.hasEnded = true;
             baseBlock.setComplete(this);
-        },
+        }
 
     }
 });

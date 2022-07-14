@@ -21,7 +21,7 @@ Vue.component('code-input-block', {
     watch: {
         code(value) {
             if (value === this.$props.config.solution) {
-                baseBlock.setComplete(this);
+                this.destroy();
             }
         }
     },
@@ -43,5 +43,10 @@ Vue.component('code-input-block', {
         requestAnimationFrame(() => {
             this.$refs.input.focus();
         })
+    },
+    methods: {
+        destroy() {
+            baseBlock.setComplete(this);
+        }
     }
 });

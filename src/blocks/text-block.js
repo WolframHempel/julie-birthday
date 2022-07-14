@@ -15,6 +15,7 @@ Vue.component('text-block', {
         }
     },
     mounted() {
+        this.isDestroyed = false;
         this.init();
     },
     methods: {
@@ -23,11 +24,14 @@ Vue.component('text-block', {
             this.chars.push(this.$props.config.message[0]);
         },
         onAnimationEnd() {
+            if (this.isDestroyed) {
+                return;
+            }
             this.$data.index++;
             if (this.$data.index > this.$props.config.message.length) {
                 baseBlock.setInitialized(this);
                 if (!this.$props.config.onClickNext) {
-                    baseBlock.setComplete(this);
+                    this.destroy();
                 }
                 return;
             }
@@ -40,9 +44,17 @@ Vue.component('text-block', {
             }
 
             if (this.$props.config.onClickNext) {
-                baseBlock.setComplete(this);
-
+                this.destroy();
             }
+        },
+
+        destroy() {
+            this.isDestroyed = true;
+            for (var i = this.$data.index + 1; i < this.$props.config.message.length; i++) {
+                this.chars.push(this.$props.config.message[i])
+            }
+
+            baseBlock.setComplete(this);
         }
     }
 });

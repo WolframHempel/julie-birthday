@@ -143,7 +143,7 @@ export default {
             maskUrl: '/assets/img/ruby-mask.png'
         }
     },
-    'gotthelfCodeInput': {
+    'rubyCodeInput': {
         type: 'code-input',
         onComplete: {
             destroy: 'rubyFoto'

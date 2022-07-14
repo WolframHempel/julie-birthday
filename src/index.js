@@ -13,7 +13,9 @@ import C from './constants'
 window.app = new Vue({
     data: {
         status: "ready",
-        blocks: []
+        blocks: [],
+        adminControlsOpen: false,
+        gameOver: false
     },
     el: '#app-container',
     methods: {
@@ -25,9 +27,23 @@ window.app = new Vue({
                 const types = Object.keys(this.$options.components).join(', ');
                 throw new Error(`Unknown component ${type} - valid types are ${types}`);
             }
+            for (var i = 0; i < this.blocks.length; i++) {
+                if (this.blocks[i].id === id) {
+                    return;
+                }
+            }
             this.blocks.push({
                 id, type, config
             });
+        },
+        previous() {
+
+        },
+        next() {
+            this.$children[this.$children.length - 1].destroy();
+        },
+        toggleAdminControls() {
+            this.$data.adminControlsOpen = !this.$data.adminControlsOpen;
         }
     }
 });
