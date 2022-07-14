@@ -189,4 +189,12 @@ export default {
             message: `Excellent. This is all the guidance we will provide. From here on, it's up to you. Prove us you are worthy. (We will now format your phone's internal storage to ensure our communication can't be traced. Good Luck!)`
         }
     },
+    'gameOverConfirm': {
+        type: 'text',
+        config: {
+            message: 'OK',
+            styles: ['clickable'],
+            onClickNext: true
+        }
+    },
 }
