@@ -13,6 +13,7 @@ import C from './constants'
 window.app = new Vue({
     data: {
         status: "ready",
+        version: '0.1.2',
         blocks: [],
         adminControlsOpen: false,
         gameOver: false
