@@ -25,6 +25,12 @@
   </head>
   <body>
     <div id="app-container">
+      <div class="admin-controls" :class="{open:adminControlsOpen}">
+        <div @click="toggleAdminControls"></div>
+        <div @click="previous"><<</div>
+        <div @click="next">>></div>
+      </div>
+      <div id="format-overlay" v-if="gameOver" style="background-image:url(/assets/img/format.png)"></div>
       status is <span>{{status}}</span>
       <pre>
 
@@ -39,7 +45,12 @@
    {_"            "_}
   
       </pre>
-      <component v-for="block in blocks" v-bind:is="block.type" :id="block.id" :config="block.config"></component>
+      <component 
+        v-for="block in blocks" 
+        v-bind:is="block.type" 
+        :id="block.id" 
+        :config="block.config"
+        :key="block.id"></component>
       <!--
       <div class="cursor">|</div>
       -->
